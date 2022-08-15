@@ -10,8 +10,8 @@ class Gear
   end
 
   def initialize(args)
-    @chainring = args[:chainring] || 40
-    @cog = args[:cog] || 18
+    @chainring = args.fetch(:chainring, 40)
+    @cog = args.fetch(:cog, 18)
     @wheel = args[:wheel]
   end
 
