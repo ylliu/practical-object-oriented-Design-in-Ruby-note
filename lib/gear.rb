@@ -9,6 +9,12 @@ class Gear
     @wheel = wheel
   end
 
+  def initialize(args)
+    @chainring = args[:chainring]
+    @cog = args[:cog]
+    @wheel = args[:wheel]
+  end
+
   def ratio
     chainring / cog.to_f
   end
@@ -23,5 +29,10 @@ class Gear
 
 end
 
-puts Gear.new(52, 11, Wheel.new(26, 1.5)).gear_inches
+# puts Gear.new(52, 11, Wheel.new(26, 1.5)).gear_inches
 
+puts Gear.new(
+  :chainring => 52,
+  :cog => 11,
+  :wheel => Wheel.new(26, 1.5)
+).gear_inches
