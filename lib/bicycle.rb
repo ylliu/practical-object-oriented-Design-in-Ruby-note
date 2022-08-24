@@ -7,6 +7,10 @@ class Bicycle
     @tire_size = args[:tire_size] || default_tire_size
   end
 
+  def default_tire_size
+    raise NotImplementedError
+  end
+
   def default_chain
     '10-speed'
   end
@@ -51,6 +55,12 @@ class MountainBike < Bicycle
   end
 end
 
+class RecumbentBike < Bicycle
+  def default_chain
+    '9-speed'
+  end
+end
+
 road_bike = RoadBike.new(
   size: 'M',
   tape_color: 'red'
@@ -58,11 +68,15 @@ road_bike = RoadBike.new(
 
 puts road_bike.size
 puts road_bike.tire_size
-#
-# mountain_bike = MountainBike.new(
-#   size: 'S',
-#   front_shock: 'Manitou',
-#   rear_shock: 'Fox')
 
-# puts mountain_bike.size
+mountain_bike = MountainBike.new(
+  size: 'S',
+  front_shock: 'Manitou',
+  rear_shock: 'Fox')
+
+puts mountain_bike.size
+puts mountain_bike.tire_size
+
 # puts mountain_bike.spares
+
+bent = RecumbentBike.new
